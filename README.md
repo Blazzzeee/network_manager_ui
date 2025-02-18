@@ -66,10 +66,11 @@ cd network_manager_ui
 ./install.sh
 ```
 
-For any issues contact me at @maanikhurana1007@gmail.com
+
 ### Usage
 Run the menu by calling network_manager as a keybind or from your panel such as waybar , polybar etc , without any system tray
 , don't forget to restart terminal after installation :D
 ```bash
 network_manager
 ```
+For any issues contact me at @maanikhurana1007@gmail.com
