@@ -20,8 +20,8 @@ else
 fi
 
 # Move rofi to ~/.config/rofi/wifi/
-echo -e "\033[1;34mMoving rofi to ~/.config/rofi/wifi/\033[0m"
-cp -r rofi/ ~/.config/rofi/wifi/
+echo -e "\033[1;34mMoving wifi to ~/.config/rofi/wifi/\033[0m"
+cp -r wifi/ ~/.config/rofi/
 if [ $? -eq 0 ]; then
     echo -e "\033[1;32mSuccess: rofi moved to ~/.config/rofi/wifi/\033[0m"
 else
@@ -36,4 +36,6 @@ if [ $? -eq 0 ]; then
 else
     echo -e "\033[1;31mFailure: Could not move network_manager to /usr/local/bin/\033[0m"
 fi
+
+echo -e "\033[1;  Sucessfully installed network_manager_ui !!  Enjoy:D \033[0m"
 
