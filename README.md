@@ -15,7 +15,7 @@ Also since the project uses rofi , using Search functionality saves you the time
 
 ## Demonstration
 
-
+![demo](assets/nm-ui.gif)
 
 ## Theming 
 The menu comes in four diffrent flavours or themes which are references to great color palletes
