@@ -1,0 +1,56 @@
+@theme "/dev/null"
+
+* {
+    bg: #2e3440;
+    fg: #d8dee9;
+    al: #b48ead;
+    selected: #88c0d0; 
+    border-radius: 4px;
+    background-color: @bg;
+    text-color: @fg;
+    font: "JetBrainsMono Nerd Font 18";
+    }
+
+window {
+location:northeast;
+    width: 20%;
+    children: [ box ];
+}
+
+box {
+    children: [ entry, listview ];
+}
+
+entry {
+	padding : 0 0 15 40;
+    placeholder: "    Search WiFi...";
+    placeholder-color: @al;
+    expand: false;
+    text-color: @al;
+    border-color: #000000;
+    border: 0 0 2 0;
+ }
+
+element {
+    text-color: @fg;
+}
+
+element selected {
+    text-color: @selected;
+    text-decoration:underline;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+listview {
+    fixed-height: false;
+    padding: 0;
+}
+
+
+listview, element, element selected, element-text, element-icon {
+    cursor: pointer;
+}
