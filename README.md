@@ -1,7 +1,7 @@
 ## About the project
 A better way to do wifi menu
 
-The project is primarily aimed for people that are newbs to linux distros and want a generic solution for whatever window manager , or desktop environment they hope on, worrying about ui for wifi menu is annoying , also gtk, qt implementation look wierd and old to me .If you are in this category this might work for you, other options lack either proper pre configured ui or have a shady look or are non functional in their performance charts . This tries to act as your prefferred way by solving all the problems. The project remains open to any healthy criticism and ideas
+The project is primarily aimed at  people that are newbs to linux distros and want a generic solution for whatever window manager , or desktop environment they hope on, worrying about ui for wifi menu is annoying , also gtk, qt implementation look wierd and old to me .If you are in this category this might work for you, other options lack either proper pre configured ui or have a shady look or are non functional in their performance charts . This tries to act as your prefferred way by solving all the problems. The project remains open to any healthy criticism and ideas
 
 If you are looking for a plug and play utility to manage wifi and ethernet connections , network_manager_ui might be the choice for you
 
@@ -9,9 +9,9 @@ This project uses rofi as a ui library and python script as backend to create a 
 
 If you dont like system tray implementations such as nm_appllet , try this project ! 
 
-Other implementations such network_manager_rofi is very slow and somewhat inefficent 
+Other implementations such as network_manager_rofi is very slow and inefficent .
 
-Also since the project uses rofi , using Search functionality saves you the time of scrolling when you already know what you want to do!
+Also since the project uses rofi , using Search functionality saves you alot of mouse effort
 
 ## Demonstration
 
