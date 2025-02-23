@@ -54,7 +54,13 @@ sudo pacman -Syy rofi-wayland networkmanager python3 pinentry swaync --needed
 ```bash
 sudo apt update && sudo apt install network-manager python3 pinentry swaync
 ```
-#### The rofi-wayland fork is not available on debian based systems from apt , build it from source instead <br> https://github.com/in0ni/rofi-wayland
+#### If you are on wayland , The rofi-wayland fork is not available on debian based systems from apt , build it from source instead <br> https://github.com/in0ni/rofi-wayland
+
+#### If you using X11 based Window Manager , install rofi instead . 
+
+``` bash 
+sudo apt install rofi
+```
 
 ### For Fedora
 ```bash
