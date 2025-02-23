@@ -10,7 +10,7 @@
       treefmt-nix,
       self,
     }:
-    flake-utils.lib.eachSystem
+    (flake-utils.lib.eachSystem
       (with flake-utils.lib.system; [
         x86_64-linux
         aarch64-linux
@@ -29,5 +29,7 @@
           checks.formatting = treefmtEval.config.build.check self;
           checks.builds = network_manager_ui;
         }
-      );
+      )) // {
+        hmModules.default = ./hmModule.nix self;
+      };
 }
