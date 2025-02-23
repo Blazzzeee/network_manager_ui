@@ -30,6 +30,6 @@
           checks.builds = network_manager_ui;
         }
       )) // {
-        hmModules.default = ./hmModule.nix self;
+        homeModules.default = import ./hmModule.nix self;
       };
 }

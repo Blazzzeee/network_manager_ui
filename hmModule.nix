@@ -13,21 +13,31 @@ in {
     options.programs.network_manager_ui = {
         enable = mkEnableOption "network_manager_ui";
 
+        rofiPkg = mkOption {
+            type = types.package;
+            example = literalExpression "pkgs.wofi";
+            default = pkgs.rofi;
+            description = ''
+            Which 'rofi' to use e.g. rofi, rofi-wayland
+            '';
+            apply = val: lib.getExe val;
+        };
+
         dmenu = {
             pinentry = mkOption {
                 type = types.package;
-                example = literalExpression "pkgs.pinentry-gtk";
-                default = pkgs.pinentry-gtk;
+                example = literalExpression "pkgs.pinentry-rofi";
+                default = pkgs.pinentry-rofi;
                 description = ''
                     Which pinentry interface to use.
                 '';
                 # we want the program in the config
-                apply = val: if val == null then val else lib.getExe val;
+                apply = val: lib.getExe val;
             };
         };
 
         pinentry.prompt = mkOption {
-            type = text;
+            type = types.str;
             default = "Password:";
             description = "Pinentry prompt"; 
         };
@@ -41,9 +51,9 @@ in {
     };
 
     config = lib.mkIf cfg.enable {
-        xdg.configFile.networkmanager."config.ini".text = pkgs.lib.generators.toINI {} {
+        xdg.configFile."networkmanager/config.ini".text = pkgs.lib.generators.toINI {} {
             dmenu = {
-                dmenu_command = "rofi -dmenu -theme ${./wifi} -i -no-history -matching fuzzy -no-tokenize -hover-select";
+                dmenu_command = "${cfg.rofiPkg} -dmenu -theme ${./wifi}/config.rasi -i -no-history -matching fuzzy -no-tokenize -hover-select";
 
                 pinentry = cfg.dmenu.pinentry;
                 wifi_icons = "󰤯󰤟󰤢󰤥󰤨";

@@ -8,6 +8,7 @@
   gobject-introspection,
   writeText,
   wrapGAppsHook,
+  makeWrapper
 }:
 let
   pygobject-stubs' = python3Packages.pygobject-stubs.overridePythonAttrs (old: {
@@ -32,6 +33,7 @@ python3Packages.buildPythonPackage {
     ruff
     gobject-introspection
     wrapGAppsHook
+    makeWrapper
   ];
   src = ./.;
 
