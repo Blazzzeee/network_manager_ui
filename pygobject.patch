@@ -1,0 +1,59 @@
+From fa3231a1a6b0ca807de3e2683b7c44dd23e88899 Mon Sep 17 00:00:00 2001
+From: James Baker <j.baker@outlook.com>
+Date: Sun, 23 Feb 2025 12:13:25 +0000
+Subject: [PATCH] fixes in order to support NetworkManager
+
+I wanted to generate stubs using this tool for NetworkManager (NM).
+
+What I found was failures for two reasons:
+
+1. Cannot generate due to invalid identifiers (80211Flags).
+1. Some enums with no entries.
+
+I fixed this by:
+
+1. Quoting those identifiers. My belief is that this will keep mypy
+   working but fixing the python level issues.
+1. Printing `pass` after each enum with empty entries.
+---
+ tools/generate.py | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/tools/generate.py b/tools/generate.py
+index 4fdfdcb..0eb4039 100755
+--- a/tools/generate.py
++++ b/tools/generate.py
+@@ -313,7 +313,11 @@ def _type_to_python(
+                 return f"typing.Callable[[{', '.join(args)}], {return_type}]"
+         else:
+             namespace = interface.get_namespace()
+-            name = interface.get_name()
++            raw_name = interface.get_name()
++            if raw_name[0].isdigit():
++                name = f'"{raw_name}"'
++            else:
++                name = raw_name
+ 
+             if namespace == "GObject" and name == "Value":
+                 return "typing.Any"
+@@ -885,6 +889,7 @@ def _gi_build_stub(
+             base = "GObject.GEnum"
+ 
+         ret += f"class {name}({base}):\n"
++        any_variants = False
+         for key in sorted(vars(obj)):
+             if key.startswith("__") or key[0].isdigit():
+                 continue
+@@ -907,6 +912,9 @@ def _gi_build_stub(
+                 ret += f"    {key} = {value}\n"
+             else:
+                 ret += f"    {key} = ... # FIXME Enum\n"
++            any_variants = True
++        if not any_variants:
++            ret += "    pass\n"
+         ret += "\n"
+ 
+     return ret
+-- 
+2.47.2
+
