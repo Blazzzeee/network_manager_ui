@@ -1,4 +1,4 @@
-ii## About the project
+## About the project
 A better way to do wifi menu
 
 The project is primarily aimed at  people that are newbs to linux distros and want a generic solution for whatever window manager , or desktop environment they hope on, worrying about ui for wifi menu is annoying , also gtk, qt implementation look wierd and old to me .If you are in this category this might work for you, other options lack either proper pre configured ui or have a shady look or are non functional in their performance charts . This tries to act as your prefferred way by solving all the problems. The project remains open to any healthy criticism and ideas
