@@ -30,7 +30,7 @@ fi
 
 # Move network_manager script to /usr/local/bin/
 echo -e "\033[1;34mMoving network_manager to /usr/local/bin/\033[0m"
-sudo cp network_manager /usr/local/bin/
+sudo cp network_manager_ui.py /usr/local/bin/network_manager
 if [ $? -eq 0 ]; then
     echo -e "\033[1;32mSuccess: network_manager moved to /usr/local/bin/\033[0m"
 else

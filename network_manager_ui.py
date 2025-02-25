@@ -25,11 +25,9 @@ from time import sleep
 import uuid
 import subprocess
 
-# pylint: disable=import-error
 import gi
 gi.require_version('NM', '1.0')
 from gi.repository import GLib, NM  # noqa pylint: disable=wrong-import-position
-# pylint: enable=import-error
 
 ENV = os.environ.copy()
 ENC = locale.getpreferredencoding()
@@ -221,7 +219,7 @@ def rescan_wifi():
     """
     delay = CONF.getint('nmdm', 'rescan_delay', fallback=5)
     for dev in CLIENT.get_devices():
-        if gi.repository.NM.DeviceWifi == type(dev):
+        if isinstance(dev, gi.repository.NM.DeviceWifi):
             try:
                 dev.request_scan_async(None, rescan_cb, None)
                 LOOP.run()
