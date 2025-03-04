@@ -77,7 +77,7 @@ cd network_manager_ui
 ./install.sh
 ```
 ### For nixOS 
-Files have been included by the help of ![](https://github.com/j-baker), this has not been included in the install script for nixOS, manual install is required  
+Files have been included by the help of [j-baker](https://github.com/j-baker), this has not been included in the install script for nixOS, manual install is required  
 
 
 ### Usage
