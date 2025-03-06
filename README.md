@@ -43,7 +43,7 @@ To change themes go to ~/.config/rofi/wifi/config.rasi and change theme name to 
 
 Installation Guide-
 Dependencies- rofi, or rofi-wayland if you are on wayland , NetworkManager , Python3 , pinentry-gtk(default) or pinentry-qt
-Some form of notification system (ex if you are on a wlroots based compositor swayvnc) 
+Some form of notification system (ex if you are on a wlroots based compositor swaync) 
 
 ### For Arch linux
 If you are on arch-based system 
@@ -62,6 +62,9 @@ sudo apt update && sudo apt install network-manager python3 pinentry swaync
 ``` bash 
 sudo apt install rofi
 ```
+### For nixOS 
+Files have been included by the help of [j-baker](https://github.com/j-baker), this has not been included in the install script for nixOS, manual install is required
+
 
 ### For Fedora
 ```bash
@@ -76,8 +79,7 @@ git clone https://github.com/Blazzzeee/network_manager_ui.git
 cd network_manager_ui
 ./install.sh
 ```
-### For nixOS 
-Files have been included by the help of [j-baker](https://github.com/j-baker), this has not been included in the install script for nixOS, manual install is required  
+  
 
 
 ### Usage
