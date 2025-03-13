@@ -7,7 +7,7 @@ If you are looking for a plug and play utility to manage wifi and ethernet conne
 
 This project uses rofi as a ui library and python script as backend to create a seamless, beautiful, elegant and working network manager 
 
-If you dont like system tray implementations such as nm_appllet , try this project ! 
+If you dont like system tray implementations such as nm_appllet , nm_ui is worth considering 
 
 Other implementations such as network_manager_rofi is very slow and inefficent .
 
