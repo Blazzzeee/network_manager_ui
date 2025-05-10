@@ -13,6 +13,10 @@ Other implementations such as network_manager_rofi is very slow and inefficent .
 
 Also since the project uses rofi , using Search functionality saves you alot of mouse effort
 
+## Annoncements 
+
+The project has an alternate blazing fast backend available in beta at https://github.com/Blazzzeee/nm_ui , to use alternate backend install current project with ./install.sh and refer to build instructions of nm_ui
+
 ## Demonstration
 
 ![demo](assets/nm-ui.gif)
