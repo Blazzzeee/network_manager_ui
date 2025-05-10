@@ -12,6 +12,7 @@
 
 window {
 location:northeast;
+    height : 200;
     width: 20%;
     children: [ box ];
 }

@@ -44,4 +44,46 @@ function rescan_wifi()
             Handle Glib.Errors by notifying client 
     --No return
 
-function rescan_cb()
+function ap_security()
+    get security info of network 
+
+    returns appropriate secuirty flag 
+
+class Action()
+    expects string name and function to execute for string variable 
+
+
+function conn_matches_string(connection, adapter)
+    checks whether the connection belongs to adapter not 
+        -- connection belongs to adapter either by interface-name or adapter name 
+
+    returns bool if connection belongs to adapter or not 
+
+function process_ap(networkManager_connection, is_active, adapter)
+    called_by = create_ap_actions , 
+    Deavtivate if active 
+    Activate if belongs to adapter and has some wireless setting 
+    else Prompt for password
+
+function deactivate_cb()
+    notify if connnection was deactivated successfully 
+    or notify error 
+
+
+function activate_cb()
+    notify if connnection was activatd successfully 
+    or notify error 
+
+
+function strength_icons(signal_strength)
+    called_by = create_ap_actions 
+
+    returns appropriate char for signal strength 
+
+function create_ap_actions(ap, active_ap , active_connection, adapter)
+    
+
+
+
+
+
