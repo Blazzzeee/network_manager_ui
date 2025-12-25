@@ -7,7 +7,7 @@
   networkmanager,
   gobject-introspection,
   writeText,
-  wrapGAppsHook,
+  wrapGAppsHook3,
   makeWrapper
 }:
 let
@@ -32,7 +32,7 @@ python3Packages.buildPythonPackage {
     python3Packages.mypy
     ruff
     gobject-introspection
-    wrapGAppsHook
+    wrapGAppsHook3
     makeWrapper
   ];
   src = ./.;
