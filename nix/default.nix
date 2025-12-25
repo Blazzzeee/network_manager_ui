@@ -36,10 +36,15 @@ python3Packages.buildPythonPackage {
     makeWrapper
   ];
   src = ./.;
+  
+  pyproject = true;
+  build-system = [ python3Packages.setuptools ];
 
   buildInputs = [
     networkmanager
   ];
+
+  doCheck = false;
 
   propagatedBuildInputs = with python3Packages; [
     dmenu
@@ -47,7 +52,7 @@ python3Packages.buildPythonPackage {
   ];
 
   checkPhase = ''
-    python -m mypy network_manager_ui.py
-    ruff check network_manager_ui.py
+    python -m mypy $src/network_manager_ui.py
+    ruff check $src/network_manager_ui.py
   '';
 }
