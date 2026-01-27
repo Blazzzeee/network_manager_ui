@@ -53,7 +53,7 @@ in {
     config = lib.mkIf cfg.enable {
         xdg.configFile."networkmanager/config.ini".text = pkgs.lib.generators.toINI {} {
             dmenu = {
-                dmenu_command = "${cfg.rofiPkg} -dmenu -theme ${./wifi}/config.rasi -i -no-history -matching fuzzy -no-tokenize -hover-select";
+                dmenu_command = "${cfg.rofiPkg} -dmenu -theme ~/.config/rofi/wifi/config.rasi -i -no-history -matching fuzzy -no-tokenize -hover-select";
 
                 pinentry = cfg.dmenu.pinentry;
                 wifi_icons = "󰤯󰤟󰤢󰤥󰤨";
@@ -69,6 +69,8 @@ in {
                 terminal = cfg.editor.terminal;
             };
         };
+
+        xdg.configFile."rofi/wifi".source = ../wifi;
 
         home.packages = [ flake.packages.${pkgs.stdenv.system}.network_manager_ui ];
     };

@@ -1,14 +1,20 @@
 {
-  runCommand,
+  lib,
   ruff,
+  rofi-wayland,
   dmenu,
-  python3,
+  glib,
+  gtk3,
+  gsettings-desktop-schemas,
+  librsvg,
+  adwaita-icon-theme,
   python3Packages,
   networkmanager,
   gobject-introspection,
-  writeText,
+  libnotify,
   wrapGAppsHook3,
-  makeWrapper
+  makeWrapper,
+  writeText
 }:
 let
   pygobject-stubs' = python3Packages.pygobject-stubs.overridePythonAttrs (old: {
@@ -24,9 +30,30 @@ let
     '';
   });
 
+  defaultConfig = writeText "config.ini" ''
+    [dmenu]
+    dmenu_command = rofi -dmenu -p Networks -i
+    wifi_icons = 󰤯󰤟󰤢󰤥󰤨
+    format = {name} {icon}
+    list_saved = False
+
+    [editor]
+    terminal = kitty
+  '';
+
 in
 python3Packages.buildPythonPackage {
-  name = "network_manager_ui";
+  pname = "network_manager_ui";
+  version = "0.0.0";
+
+  src = ../.;
+
+  pyproject = true;
+
+  build-system = [
+    python3Packages.setuptools
+  ];
+
   nativeBuildInputs = [
     pygobject-stubs'
     python3Packages.mypy
@@ -35,24 +62,39 @@ python3Packages.buildPythonPackage {
     wrapGAppsHook3
     makeWrapper
   ];
-  src = ./.;
-  
-  pyproject = true;
-  build-system = [ python3Packages.setuptools ];
 
   buildInputs = [
     networkmanager
+    rofi-wayland
+    dmenu
+    libnotify
+    glib
+    gtk3
+    gsettings-desktop-schemas
+    librsvg
+    adwaita-icon-theme
   ];
 
-  doCheck = false;
-
   propagatedBuildInputs = with python3Packages; [
-    dmenu
     pygobject3
   ];
 
+  postPatch = ''
+    cp ${./setup.py} setup.py
+    substituteInPlace network_manager_ui.py \
+      --replace-fail 'CONF.read(expanduser("~/.config/networkmanager/config.ini"))' \
+                     'CONF.read([expanduser("~/.config/networkmanager/config.ini"), "${defaultConfig}"])'
+  '';
+
+  postFixup = ''
+    wrapProgram $out/bin/network_manager_ui \
+      --prefix PATH : ${lib.makeBinPath [ rofi-wayland dmenu libnotify ]}
+  '';
+
+  doCheck = false;
+
   checkPhase = ''
-    python -m mypy $src/network_manager_ui.py
-    ruff check $src/network_manager_ui.py
+    python -m mypy network_manager_ui.py
+    ruff check network_manager_ui.py
   '';
 }
