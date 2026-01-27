@@ -67,7 +67,12 @@ sudo apt update && sudo apt install network-manager python3 pinentry swaync
 sudo apt install rofi
 ```
 ### For nixOS 
-Files have been included by the help of [j-baker](https://github.com/j-baker), this has not been included in the install script for nixOS, manual install is required
+Add network_manager_ui as input to your flake in following way
+```
+environment.systemPackages = [
+  network_manager_ui.packages.x86_64-linux.network_manager_ui
+];
+```
 
 
 ### For Fedora
