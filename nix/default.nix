@@ -1,7 +1,7 @@
 {
   lib,
   ruff,
-  rofi-wayland,
+  rofi,
   dmenu,
   glib,
   gtk3,
@@ -65,7 +65,7 @@ python3Packages.buildPythonPackage {
 
   buildInputs = [
     networkmanager
-    rofi-wayland
+    rofi
     dmenu
     libnotify
     glib
@@ -88,7 +88,7 @@ python3Packages.buildPythonPackage {
 
   postFixup = ''
     wrapProgram $out/bin/network_manager_ui \
-      --prefix PATH : ${lib.makeBinPath [ rofi-wayland dmenu libnotify ]}
+      --prefix PATH : ${lib.makeBinPath [ rofi -dmenu libnotify ]}
   '';
 
   doCheck = false;
