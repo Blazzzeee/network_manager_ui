@@ -32,9 +32,9 @@ let
 
   defaultConfig = writeText "config.ini" ''
     [dmenu]
-    dmenu_command = rofi -dmenu -p Networks -i
+    dmenu_command = rofi -dmenu -theme ~/.config/rofi/wifi/config.rasi -i -no-history -matching fuzzy -no-tokenize -hover-select
     wifi_icons = 󰤯󰤟󰤢󰤥󰤨
-    format = {name} {icon}
+    format = {name} {icon} 
     list_saved = False
 
     [editor]
@@ -88,7 +88,7 @@ python3Packages.buildPythonPackage {
 
   postFixup = ''
     wrapProgram $out/bin/network_manager_ui \
-      --prefix PATH : ${lib.makeBinPath [ rofi -dmenu libnotify ]}
+      --prefix PATH : ${lib.makeBinPath [ rofi libnotify ]}
   '';
 
   doCheck = false;
